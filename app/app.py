@@ -1,14 +1,22 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for
 from models import db, Boat, CrewMember, FishCatch, FishType, Trip, BankVisit
 from datetime import datetime
 from flask_migrate import Migrate
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = 'mysql+pymysql://admin123:pass123@localhost:3306/my_database'
+db_user = os.environ.get('DB_USER', 'my_user')
+db_pass = os.environ.get('DB_PASS', 'pass123')
+db_host = os.environ.get('DB_HOST', 'db')
+db_name = os.environ.get('DB_NAME', 'my_database')
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{db_user}:{db_pass}@{db_host}/{db_name}'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db.init_app(app)
 migrate = Migrate(app, db)
+
+with app.app_context():
+    db.create_all()
 
 @app.route("/")
 def index():
