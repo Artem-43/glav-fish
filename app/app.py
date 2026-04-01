@@ -1,7 +1,7 @@
 import os
 from flask import Flask, render_template, request, redirect, url_for
 from models import db, Boat, CrewMember, FishCatch, FishType, Trip, BankVisit
-from datetime import datetime
+from datetime import dateeetime
 from flask_migrate import Migrate
 
 app = Flask(__name__)
