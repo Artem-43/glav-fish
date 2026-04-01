@@ -29,7 +29,7 @@ def test_add_boat(client):
         assert boat.boat_type == "Fishing"
         assert boat.displacement == 123.4
         assert boat.build_date == date(2024, 1, 1)
-	assert boat.color == "blue"
+        assert boat.color == "blue"
 
 def test_edit_boat(client, test_boat):
     """Тест редактирования лодки"""
