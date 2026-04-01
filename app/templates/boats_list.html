@@ -10,6 +10,7 @@
         <tr>
             <th>Название</th>
             <th>Тип</th>
+            <th>Цвет</th>
             <th>Водоизмещение</th>
             <th>Дата постройки</th>
             <th>Действия</th>
@@ -20,6 +21,7 @@
         <tr>
             <td>{{ boat.name }}</td>
             <td>{{ boat.boat_type }}</td>
+            <td>{{ boat.color }}</td>
             <td>{{ boat.displacement }}</td>
             <td>{{ boat.build_date }}</td>
             <td>
@@ -32,7 +34,7 @@
         <!-- БЛОК СО СПИСКОМ РЕЙСОВ -->
         {% if boat.trips %}
         <tr>
-            <td colspan="5">
+            <td colspan="6">
                 <strong>Выходы в море:</strong>
                 <ul class="mt-2">
                     {% for trip in boat.trips %}
