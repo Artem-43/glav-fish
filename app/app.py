@@ -18,9 +18,9 @@ migrate = Migrate(app, db)
 with app.app_context():
     db.create_all()
 
-@app.route("/")
-def index():
-    return render_template("index.html")
+#@app.route("/")
+#def index():
+#    return render_template("index.html")
 
 # ----------- СПИСОК КАТЕРОВ -----------
 @app.route("/boats")
