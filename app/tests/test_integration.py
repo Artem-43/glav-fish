@@ -13,6 +13,7 @@ def test_add_boat(client):
     res = client.post("/boats/add", data={
         "name": "TestBoat",
         "boat_type": "Fishing",
+	"color": "blue",
         "displacement": "123.4",
         "build_date": "2024-01-01"
     }, follow_redirects=True)
@@ -28,6 +29,7 @@ def test_add_boat(client):
         assert boat.boat_type == "Fishing"
         assert boat.displacement == 123.4
         assert boat.build_date == date(2024, 1, 1)
+        assert boat.color == "blue"
 
 def test_edit_boat(client, test_boat):
     """Тест редактирования лодки"""
@@ -37,6 +39,7 @@ def test_edit_boat(client, test_boat):
     res = client.post(f"/boats/{test_boat}/edit", data={
         "name": "UpdatedBoat",
         "boat_type": "UpdatedType",
+	"color": "red",
         "displacement": "200.5",
         "build_date": "2023-06-15"
     }, follow_redirects=True)

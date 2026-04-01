@@ -28,18 +28,23 @@ def boats_list():
     boats = Boat.query.all()
     return render_template("boats_list.html", boats=boats)
 
+
 # ----------- ДОБАВЛЕНИЕ КАТЕРА -----------
 @app.route("/boats/add", methods=["GET", "POST"])
 def add_boat():
     if request.method == "POST":
         name = request.form["name"]
         boat_type = request.form["boat_type"]
+        color = request.form["color"]
         displacement = float(request.form["displacement"])
-        build_date = datetime.strptime(request.form["build_date"], "%Y-%m-%d")
+        build_date = datetime.strptime(
+            request.form["build_date"], "%Y-%m-%d"
+        ).date()
 
         new_boat = Boat(
             name=name,
             boat_type=boat_type,
+            color=color,
             displacement=displacement,
             build_date=build_date
         )
@@ -50,6 +55,8 @@ def add_boat():
 
     return render_template("boat_form.html", boat=None)
 
+
+# ----------- РЕДАКТИРОВАНИЕ КАТЕРА -----------
 @app.route("/boats/<int:boat_id>/edit", methods=["GET", "POST"])
 def edit_boat(boat_id):
     boat = Boat.query.get_or_404(boat_id)
@@ -57,8 +64,11 @@ def edit_boat(boat_id):
     if request.method == "POST":
         boat.name = request.form["name"]
         boat.boat_type = request.form["boat_type"]
+        boat.color = request.form["color"]
         boat.displacement = float(request.form["displacement"])
-        boat.build_date = datetime.strptime(request.form["build_date"], "%Y-%m-%d")
+        boat.build_date = datetime.strptime(
+            request.form["build_date"], "%Y-%m-%d"
+        ).date()
 
         db.session.commit()
         return redirect(url_for("boats_list"))

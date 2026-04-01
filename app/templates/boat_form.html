@@ -30,6 +30,11 @@
         <input type="date" name="build_date" class="form-control"
                value="{{ boat.build_date if boat else '' }}" required>
     </div>
+    <div class="mb-3">
+        <label class="form-label">Цвет</label>
+        <input type="text" name="color" class="form-control"
+               value="{{ boat.color if boat else '' }}" required>
+    </div>
 
     <button class="btn btn-success">
         {% if boat %}Сохранить{% else %}Добавить{% endif %}

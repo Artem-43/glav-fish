@@ -5,10 +5,10 @@ INSERT INTO fish_types (name) VALUES
 ('Hake');
 
 -- --- BOATS ---
-INSERT INTO boats (name, boat_type, displacement, build_date) VALUES
-('Sea Hunter', 'Trawler', 1200.5, '2010-05-12'),
-('Ocean King', 'Longliner', 980.0, '2015-07-23'),
-('Wave Rider', 'Seiner', 1100.3, '2012-03-18');
+INSERT INTO boats (name, boat_type, displacement, build_date, color) VALUES
+('Sea Hunter', 'Trawler', 1200.5, '2010-05-12', 'Blue'),
+('Ocean King', 'Longliner', 980.0, '2015-07-23', 'White'),
+('Wave Rider', 'Seiner', 1100.3, '2012-03-18', 'Green');
 
 
 -- --- TRIPS ---
