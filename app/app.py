@@ -9,7 +9,7 @@ db_user = os.environ.get('DB_USER', 'my_user')
 db_pass = os.environ.get('DB_PASS', 'pass123')
 db_host = os.environ.get('DB_HOST', 'db')
 db_name = os.environ.get('DB_NAME', 'my_database')
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL", "f'mysql+pymysql://{db_user}:{db_pass}@{db_host}/{db_name}')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL", f"mysql+pymysql://{db_user}:{db_pass}@{db_host}/{db_name}")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db.init_app(app)
