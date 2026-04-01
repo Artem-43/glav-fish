@@ -1,19 +1,20 @@
-import sys, os
+import os
+import sys
+import pytest
+from datetime import date
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
+# ✅ задаём test DB ДО import app
+os.environ["DATABASE_URL"] = "sqlite:///:memory:"
 
-import pytest
 from app import app, db
 from models import Boat
-from datetime import date 
+
 
 @pytest.fixture
 def client():
-    # Включаем режим тестирования
     app.config["TESTING"] = True
-
-    # ПЕРЕопределяем базу на SQLite
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///:memory:"
 
     with app.app_context():
         db.drop_all()
@@ -22,9 +23,12 @@ def client():
         with app.test_client() as client:
             yield client
 
+        db.session.remove()
+        db.drop_all()
+
+
 @pytest.fixture
 def test_boat():
-    """Создаёт тестовую лодку и возвращает её ID"""
     with app.app_context():
         boat = Boat(
             name="TestBoat",
