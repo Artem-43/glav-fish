@@ -12,7 +12,7 @@ def test_add_boat(client):
     """Тест добавления лодки через форму"""
     res = client.post("/boats/add", data={
         "name": "TestBoat",
-        "boat_type": "Fishing"
+        "boat_type": "Fishing",
 	"color": "blue",
         "displacement": "123.4",
         "build_date": "2024-01-01"
