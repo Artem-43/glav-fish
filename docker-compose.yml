@@ -12,7 +12,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -prootpass"]
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u my_user -pass123"]
       interval: 10s
       timeout: 5s
       retries: 5
