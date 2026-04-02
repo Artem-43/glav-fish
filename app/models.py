@@ -9,6 +9,7 @@ class Boat(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), unique=True, nullable=False)
     boat_type = db.Column(db.String(100), nullable=False)
+    color = db.Column(db.String(50), nullable=True)
     displacement = db.Column(db.Float, nullable=False)
     build_date = db.Column(db.Date, nullable=False)
 
