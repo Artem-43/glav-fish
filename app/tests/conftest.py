@@ -5,7 +5,7 @@ from datetime import date
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-# ✅ задаём test DB ДО import app
+# задаём test DB ДО import app
 os.environ["DATABASE_URL"] = "sqlite:///:memory:"
 
 from app import app, db

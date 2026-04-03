@@ -15,8 +15,9 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
 migrate = Migrate(app, db)
 
+
 with app.app_context():
-    db.create_all()
+    db.create_all()  # <- таблицы создаются при запуске контейнера
 
 @app.route("/")
 def index():
@@ -307,7 +308,3 @@ def bank_avg_catch():
         end_date=end_date
     )
 
-if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
-    app.run(debug=False)
