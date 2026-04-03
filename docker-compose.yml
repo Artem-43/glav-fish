@@ -16,9 +16,12 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+      start_period: 30s
 
   web:
-    build: .
+    image: artem12541/glav-fish:dev
+    restart: always
+    pull_policy: always  # Всегда скачивать свежий образ
     command: flask run --host=0.0.0.0
     ports:
       - "5000:5000"
